@@ -9,7 +9,7 @@
         Linux
         ( <a href="https://github.com/speeqz1/mintifier-installer/releases">Releases</a> )
     </p>
-    <img src="https://github.com/user-attachments/assets/8760a810-7b3b-42c6-a17f-2c7f6bb9d9a7"/>
+    <img src="https://github.com/user-attachments/assets/9b05701a-b0f5-4b0a-9f74-2510c6a6ce94"/>
 </div>
 <br/>
 
