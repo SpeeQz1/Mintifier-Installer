@@ -87,10 +87,17 @@ docker rmi speeqz1/tauri-build-env-ubuntu
 # Dependencies
 
 ### Ubuntu Dependencies
+
+System dependencies:
+
 ```
 sudo
 npm
+```
 
+Tauri dependencies:
+
+```
 build-essential
 curl
 wget
@@ -105,7 +112,11 @@ libjavascriptcoregtk-4.1-0=2.44.0-2
 libjavascriptcoregtk-4.1-dev=2.44.0-2
 gir1.2-javascriptcoregtk-4.1=2.44.0-2
 gir1.2-webkit2-4.1=2.44.0-2
+```
 
+Audio and video codecs dependencies:
+
+```
 patchelf
 
 libgstreamer1.0-dev
@@ -125,9 +136,28 @@ gstreamer1.0-qt5
 gstreamer1.0-pulseaudio
 ```
 
-### NPM Packages
+### NPM Dependencies
+
+dependencies:
 
 ```
-react-router-dom@7.1.1
-sass-embedded@1.83.0
+@tauri-apps/api@^2
+@tauri-apps/plugin-opener@^2
+@types/node@^22.10.2
+react@^18.3.1
+react-dom@^18.3.1
+react-router-dom@^7.1.1
+sass-embedded@^1.83.0
+vite-plugin-svgr@^4.3.0
+```
+
+devDependencies:
+
+```
+@tauri-apps/cli@^2
+@types/react@^18.3.1
+@types/react-dom@^18.3.1
+@vitejs/plugin-react@^4.3.4
+typescript@~5.6.2
+vite@^6.0.3
 ```

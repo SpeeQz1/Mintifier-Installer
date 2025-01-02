@@ -1,0 +1,146 @@
+@use "@src/styles/colors.scss" as colors;
+@use "@src/styles/fonts.scss";
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 18rem;
+  flex-shrink: 0;
+  height: 100%;
+  overflow: hidden;
+  background-color: colors.$color-text-2;
+  padding: 1rem;
+  border: 4px solid colors.$color-primary-light-2;
+}
+
+.sidebarContent {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+
+  & > * {
+    width: 100%;
+  }
+}
+
+.categoriesWrapper {
+  overflow-y: auto;
+  height: 100%;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    opacity: 20%;
+    background: colors.$color-gray;
+    border: 8px solid transparent;
+    background-clip: content-box;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: colors.$color-secondary;
+    border-radius: 50vw;
+  }
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-right: 0.5rem;
+  height: 100%;
+}
+
+.categoryButton {
+  padding: 0.5rem;
+  border: 2px solid colors.$color-primary-light-2;
+  border-radius: 0.5rem;
+  background: linear-gradient(
+    to bottom,
+    colors.$color-text-2,
+    colors.$color-primary-light-2
+  );
+  text-align: left;
+  font-size: 1rem;
+  cursor: pointer;
+
+  &.active {
+    border: 2px solid transparent;
+    background: colors.$color-accent;
+    color: colors.$color-text-2;
+    font-weight: bold;
+    text-transform: uppercase !important;
+  }
+
+  &:hover:not(.active) {
+    background: colors.$color-secondary-light-1;
+  }
+}
+
+.installAllWrapper {
+  margin-top: auto;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.divider {
+  margin: 0;
+  width: 100%;
+  border: none;
+  border-top: 4px solid colors.$color-accent-light-1;
+}
+
+.installAll {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 50vh;
+  background: colors.$color-mint-gradient-2;
+  color: colors.$color-text-2;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  font-weight: bold;
+  text-align: center;
+  box-shadow: inset 0px 4px 0px 0px colors.$color-mint-gradient-2-light-1,
+    inset 0px -4px 0px 0px colors.$color-mint-gradient-2-dark-1;
+
+  &:hover {
+    filter: contrast(150%);
+  }
+
+  &:active {
+    filter: contrast(100%);
+  }
+}
+
+.installAllSVG {
+  width: 1em;
+  height: 1em;
+  color: colors.$color-text-2;
+  transform: scale(1.5);
+}
+
+.noCategory {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  font-size: 3vw;
+  font-weight: bold;
+  color: colors.$color-gray;
+  text-align: center;
+}

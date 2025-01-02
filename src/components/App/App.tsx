@@ -1,142 +1,38 @@
-import { useState } from "react";
-import styles from "@src/components/App/App.module.scss";
-import SvgIcons from "@src/components/SvgIcons/SvgIcons";
 import "@src/styles/global.scss";
+import styles from "./App.module.scss";
 
-interface Category {
-  id: string;
-  title: string;
-}
-
-interface Section {
-  id: string;
-  categoryId: string;
-  title: string;
-}
-
-interface Application {
-  id: string;
-  name: string;
-  categoryId: string;
-  sectionId: string;
-  formats?: string[];
-  isInstalled?: boolean;
-}
+import { WebviewWindow } from '@tauri-apps/api/webviewWindow';
+import { LazyStore } from '@tauri-apps/plugin-store';
+import { SvgIcons } from "@src/components/index";
+import { InstallerSidebar, InstallerContents } from "@src/components/index";
 
 const App = () => {
-  const [categories] = useState<Category[]>([
-    { id: "3d-design", title: "3D Design" },
-    { id: "video-editing", title: "Video Editing" },
-    { id: "utilities", title: "Utilities" },
-    { id: "drawing", title: "Drawing" },
-    { id: "engineering", title: "Engineering" },
-    { id: "animation", title: "Animation" },
-    { id: "rendering", title: "Rendering" },
-    { id: "texturing", title: "Texturing" },
-    { id: "modeling", title: "Modeling" },
-    { id: "rigging", title: "Rigging" }
-  ]);
+  const createNewWindow = async () => {
+    try {
+      const store = new LazyStore('settings.json');
+      await store.set('some-key', "This is a value");
+      await store.save();
 
-  const [sections] = useState<Section[]>([
-    { id: "mesh-modeling", categoryId: "3d-design", title: "Mesh Modeling" },
-    { id: "sculpting", categoryId: "3d-design", title: "Sculpting" },
-    { id: "video-tools", categoryId: "video-editing", title: "Video Tools" },
-    { id: "animation-tools", categoryId: "animation", title: "Animation Tools" }
-  ]);
+      const webview = new WebviewWindow(`testing`, {
+        url: '/testing',
+        title: 'Testing',
+        width: 1024,
+        height: 768,
+        decorations: true,
+        center: false,
+        resizable: true,
+      });
 
-  const [applications] = useState<Application[]>([
-    {
-      id: "meshlab-1",
-      name: "MeshLab",
-      categoryId: "3d-design",
-      sectionId: "mesh-modeling",
-      formats: ["deb", "flatpakref", "AppImage"]
-    },
-    {
-      id: "meshlab-2",
-      name: "MeshLab 2",
-      categoryId: "3d-design",
-      sectionId: "mesh-modeling",
-      formats: ["deb", "flatpakref", "AppImage"]
-    },
-    {
-      id: "zbrush",
-      name: "ZBrush",
-      categoryId: "3d-design",
-      sectionId: "sculpting"
-    },
-    {
-      id: "maya",
-      name: "Maya",
-      categoryId: "3d-design",
-      sectionId: "sculpting"
-    },
-    {
-      id: "blender",
-      name: "Blender",
-      categoryId: "3d-design",
-      sectionId: "sculpting",
-      formats: ["deb", "flatpak", "snap"]
+      await webview.once('tauri://created', () => {
+        console.log('Window successfully created');
+      });
+
+      webview.once('tauri://error', (e) => {
+        console.error('Error creating window:', e);
+      });
+    } catch (error) {
+      console.error('Error creating window:', error);
     }
-  ]);
-
-  const [activeCategory, setActiveCategory] = useState("3d-design");
-  const [checkedApps, setCheckedApps] = useState<Set<string>>(new Set());
-  const [isAdvancedMode, setIsAdvancedMode] = useState(false);
-  const [selectedFormats, setSelectedFormats] = useState<Record<string, string>>({});
-
-  const handleCategoryClick = (categoryId: string) => {
-    setActiveCategory(categoryId);
-  };
-
-  const handleAppClick = (appId: string, event: React.MouseEvent) => {
-    if ((event.target as HTMLElement).tagName === "INPUT" ||
-      (event.target as HTMLElement).tagName === "BUTTON") {
-      return;
-    }
-
-    setCheckedApps(prev => {
-      const newChecked = new Set(prev);
-      if (newChecked.has(appId)) {
-        newChecked.delete(appId);
-      } else {
-        newChecked.add(appId);
-      }
-      return newChecked;
-    });
-  };
-
-  const handleCheckboxChange = (appId: string, event: React.ChangeEvent<HTMLInputElement>) => {
-    setCheckedApps(prev => {
-      const newChecked = new Set(prev);
-      if (event.target.checked) {
-        newChecked.add(appId);
-      } else {
-        newChecked.delete(appId);
-      }
-      return newChecked;
-    });
-  };
-
-  const handleFormatChange = (appId: string, format: string) => {
-    setSelectedFormats(prev => ({
-      ...prev,
-      [appId]: format
-    }));
-  };
-
-  const toggleAdvancedMode = () => {
-    setIsAdvancedMode(prev => !prev);
-  };
-
-  // Get sections for active category
-  const activeSections = sections.filter(section => section.categoryId === activeCategory);
-
-  // Get applications for each section in the active category
-  const getApplicationsForSection = (sectionId: string) => {
-    return applications.filter(app =>
-      app.categoryId === activeCategory && app.sectionId === sectionId
-    );
   };
 
   return (
@@ -150,6 +46,7 @@ const App = () => {
               <button>Help</button>
               <div className={styles.dividerVertical}></div>
               <button>Settings</button>
+              <button onClick={createNewWindow}>Testing</button>
             </nav>
           </div>
           <div className={styles.headerRight}>
@@ -166,128 +63,8 @@ const App = () => {
       </header>
 
       <main className={styles.main}>
-        <aside className={styles.sidebar}>
-          <div className={styles.sidebarContent}>
-            <div className={styles.categoriesWrapper}>
-              <div className={styles.categories}>
-                {categories.map(category => (
-                  <button
-                    key={category.id}
-                    className={`${styles.categoryButton} ${category.id === activeCategory ? styles.active : ""}`}
-                    onClick={() => handleCategoryClick(category.id)}
-                  >
-                    {category.title}
-                  </button>
-                ))}
-              </div>
-            </div>
-            <div className={styles.installAllWrapper}>
-              <hr className={styles.divider} />
-              <button className={styles.installAll}>
-                <SvgIcons.DownloadAll className={styles.installAllSVG} />
-                INSTALL ALL
-              </button>
-            </div>
-          </div>
-        </aside>
-
-        <div className={styles.contentWrapper}>
-          <div className={styles.contentHeader}>
-            <button
-              className={`${styles.advancedButton} ${isAdvancedMode ? styles.active : ""}`}
-              onClick={toggleAdvancedMode}
-            >
-              Advanced Mode
-            </button>
-          </div>
-          <div className={styles.content}>
-            {activeSections.length === 0 ? (
-              <div className={styles.noContent}>No Sections</div>
-            ) : (
-              activeSections.map(section => {
-                const sectionApps = getApplicationsForSection(section.id);
-                return (
-                  <section key={section.id} className={styles.section}>
-                    <div className={styles.sectionHeader}>
-                      <h2>{section.title}</h2>
-                      <div className={styles.dividerLines}>
-                        <hr />
-                        <hr />
-                      </div>
-                    </div>
-                    <div className={styles.applications}>
-                      {sectionApps.length === 0 ? (
-                        <div className={styles.noApps}>No Apps</div>
-                      ) : (
-                        sectionApps.map(app => (
-                          <div key={app.id} className={styles.appCardContainer}>
-                            <div
-                              className={styles.appCard}
-                              onClick={(e) => handleAppClick(app.id, e)}
-                              style={{ cursor: "pointer" }}
-                            >
-                              <div className={styles.appHeader}>
-                                <div className={styles.checkboxWrapper}>
-                                  <input
-                                    type="checkbox"
-                                    checked={checkedApps.has(app.id)}
-                                    onChange={(e) => handleCheckboxChange(app.id, e)}
-                                  />
-                                </div>
-                                <span>{app.name}</span>
-                                <button
-                                  className={styles.infoButton}
-                                  onClick={(e) => e.stopPropagation()}
-                                >
-                                  i
-                                </button>
-                              </div>
-                            </div>
-                            {isAdvancedMode && (
-                              <div className={styles.formats}>
-                                {!app.formats || app.formats.length === 0 ? (
-                                  <div className={styles.noFormats}>No Formats</div>
-                                ) : (
-                                  app.formats.map(format => (
-                                    <label
-                                      key={format}
-                                      className={styles.formatOption}
-                                    >
-                                      <input
-                                        type="radio"
-                                        name={`format-${app.id}`}
-                                        checked={selectedFormats[app.id] === format}
-                                        onChange={() => handleFormatChange(app.id, format)}
-                                      />
-                                      <span>{format}</span>
-                                    </label>
-                                  ))
-                                )}
-                              </div>
-                            )}
-                          </div>
-                        ))
-                      )}
-                    </div>
-                  </section>
-                );
-              })
-            )}
-          </div>
-          <hr className={styles.divider} />
-          <div className={styles.actions}>
-            <div className={styles.installGroup}>
-              <button className={styles.installPage}>
-                <SvgIcons.DownloadPage className={styles.installPageSVG} />
-                Install Page
-              </button>
-            </div>
-            <button className={styles.presetButton}>
-              <div className={styles.arrowDown}></div>
-              Presets
-            </button>
-          </div>
-        </div>
+        <InstallerSidebar />
+        <InstallerContents />
       </main>
     </div>
   );
