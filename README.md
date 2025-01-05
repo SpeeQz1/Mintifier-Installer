@@ -5,6 +5,10 @@
         An app bundling tool made with Tauri for Linux Mint.
     </p>
     <p>
+        <b>NOTE:</b>
+        Application is still a work in progress and is not fully functional.
+    </p>
+    <p>
         <b>Download for </b>
         Linux
         ( <a href="https://github.com/speeqz1/mintifier-installer/releases">Releases</a> )
