@@ -29,6 +29,8 @@ Apps can be easily downloaded by providing the necessary URL links to their repo
 
 To ensure that the app can be built properly and support other Linux distros a Docker container will be used based on Ubuntu (Dockerfile provided in repository).
 
+https://hub.docker.com/r/speeqz1/tauri-build-env-ubuntu
+
 ### Setup
 
 <hr/>
