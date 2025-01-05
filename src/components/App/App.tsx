@@ -1,21 +1,21 @@
 import "@src/styles/global.scss";
 import styles from "./App.module.scss";
 
-import { WebviewWindow } from '@tauri-apps/api/webviewWindow';
-import { LazyStore } from '@tauri-apps/plugin-store';
+import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
+import { LazyStore } from "@tauri-apps/plugin-store";
 import { SvgIcons } from "@src/components/index";
 import { InstallerSidebar, InstallerContents } from "@src/components/index";
 
 const App = () => {
   const createNewWindow = async () => {
     try {
-      const store = new LazyStore('settings.json');
-      await store.set('some-key', "This is a value");
+      const store = new LazyStore("settings.json");
+      await store.set("some-key", "This is a value");
       await store.save();
 
       const webview = new WebviewWindow(`testing`, {
-        url: '/testing',
-        title: 'Testing',
+        url: "/testing",
+        title: "Testing",
         width: 1024,
         height: 768,
         decorations: true,
@@ -23,15 +23,15 @@ const App = () => {
         resizable: true,
       });
 
-      await webview.once('tauri://created', () => {
-        console.log('Window successfully created');
+      await webview.once("tauri://created", () => {
+        console.log("Window successfully created");
       });
 
-      webview.once('tauri://error', (e) => {
-        console.error('Error creating window:', e);
+      webview.once("tauri://error", (e) => {
+        console.error("Error creating window:", e);
       });
     } catch (error) {
-      console.error('Error creating window:', error);
+      console.error("Error creating window:", error);
     }
   };
 

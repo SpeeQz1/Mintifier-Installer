@@ -41,6 +41,7 @@ Build your own image (slow):
 ```sh
 docker build -t speeqz1/tauri-build-env-ubuntu:latest .
 ```
+
 <hr/>
 
 Create a container using the image and create an app folder using the current directory (giving user id's to ensure proper folder ownership):
@@ -141,14 +142,20 @@ gstreamer1.0-pulseaudio
 dependencies:
 
 ```
+@emotion/react@^11.14.0,
+@emotion/styled@^11.14.0,
+@mui/material@^6.3.0,
 @tauri-apps/api@^2
 @tauri-apps/plugin-opener@^2
+@tauri-apps/plugin-store@^2.2.0
 @types/node@^22.10.2
 react@^18.3.1
 react-dom@^18.3.1
 react-router-dom@^7.1.1
+sass@^1.83.0
 sass-embedded@^1.83.0
 vite-plugin-svgr@^4.3.0
+zustand@^5.0.2
 ```
 
 devDependencies:

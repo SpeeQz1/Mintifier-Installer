@@ -1,11 +1,11 @@
-@use "@src/styles/colors.scss" as colors;
+@use "@src/styles/colors.scss" as *;
 @use "@src/styles/fonts.scss";
 
 .container {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: colors.$color-background;
+  background-color: $color-background;
   overflow: hidden;
   position: fixed;
   inset: 0;
@@ -25,8 +25,8 @@
     height: 0.5rem;
     background: linear-gradient(
       to left,
-      colors.$color-mint-gradient-1,
-      colors.$color-mint-gradient-2
+      $color-mint-gradient-1,
+      $color-mint-gradient-2
     );
   }
 }
@@ -40,7 +40,7 @@
 .dividerVertical {
   width: 2px;
   height: 80%;
-  background-color: colors.$color-accent;
+  background-color: $color-accent;
 }
 
 .nav {
@@ -53,32 +53,35 @@
     padding: 0 1rem;
     background: none;
     border: none;
-    color: colors.$color-text-1;
+    color: $color-text-1;
     cursor: pointer;
     display: flex;
     align-items: center;
     white-space: nowrap;
     font-size: 1rem;
     position: relative;
-    
+
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       inset: 0.5rem;
-      border: 1px solid colors.$color-gray;
+      left: 0;
+      right: 0;
+      margin: auto;
       opacity: 0;
+      width: 50%;
+      border-bottom: 3px solid $color-primary;
     }
-    
+
     &:hover {
       &::after {
         opacity: 1;
       }
 
       &:active {
-        -webkit-text-stroke: 1px colors.$color-text-1;
+        -webkit-text-stroke: 1px $color-text-1;
         &::after {
           border: none;
-          background-color: rgba(colors.$color-gray, 0.2);
         }
       }
     }
@@ -99,7 +102,7 @@
 .logoText {
   font-size: 1em;
   font-weight: 600;
-  color: colors.$color-text-2;
+  color: $color-text-2;
 }
 
 .appLogoSVG {
@@ -119,7 +122,9 @@
   z-index: -1;
 }
 
-.slope1, .slope2, .slope3 {
+.slope1,
+.slope2,
+.slope3 {
   position: absolute;
   top: 0;
   right: 0;
@@ -129,17 +134,17 @@
 
 .slope1 {
   width: 60vw;
-  background-color: colors.$color-secondary;
+  background-color: $color-secondary;
 }
 
 .slope2 {
   width: 55vw;
-  background-color: colors.$color-primary;
+  background-color: $color-primary;
 }
 
 .slope3 {
   width: 50vw;
-  background-color: colors.$color-accent;
+  background-color: $color-accent;
 }
 
 .main {
@@ -149,5 +154,5 @@
   padding: 2rem;
   overflow: hidden;
   position: relative;
-  background-color: colors.$color-background;
+  background-color: $color-background;
 }

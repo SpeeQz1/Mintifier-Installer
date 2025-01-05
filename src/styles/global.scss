@@ -1,10 +1,21 @@
 *,
 *::before,
 *::after {
-    font-family: "Inter";
-    box-sizing: border-box;
+  font-family: "Inter" !important;
+  box-sizing: border-box;
+}
+
+html {
+  //Disable selection
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 
 svg * {
-    fill: currentColor !important;
+  // Ensure all SVGs use a color given to them
+  fill: currentColor !important;
 }
