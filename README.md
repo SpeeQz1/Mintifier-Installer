@@ -27,9 +27,10 @@ Apps can be easily downloaded by providing the necessary URL links to their repo
 
 # Building the app
 
-To ensure that the app can be built properly and support other Linux distros a Docker container will be used based on Ubuntu (Dockerfile provided in repository).
+To ensure that the app can be built properly and support other Linux distros a Docker container will be used based on Debian.
 
-https://hub.docker.com/r/speeqz1/tauri-build-env-ubuntu
+You can either build the Docker image yourself or pull from the repository:
+https://hub.docker.com/r/speeqz1/tauri-build-env-debian
 
 ### Setup
 
@@ -37,7 +38,7 @@ https://hub.docker.com/r/speeqz1/tauri-build-env-ubuntu
 Pull image from Docker Hub:
 
 ```sh
-docker pull speeqz1/tauri-build-env-ubuntu
+docker pull speeqz1/tauri-build-env-debian
 ```
 
 **OR**
@@ -45,7 +46,7 @@ docker pull speeqz1/tauri-build-env-ubuntu
 Build your own image (slow):
 
 ```sh
-docker build -t speeqz1/tauri-build-env-ubuntu:latest .
+docker build -t speeqz1/tauri-build-env-debian:latest .
 ```
 
 <hr/>
@@ -53,10 +54,10 @@ docker build -t speeqz1/tauri-build-env-ubuntu:latest .
 Create a container using the image and create an app folder using the current directory (giving user id's to ensure proper folder ownership):
 
 ```sh
-docker run -it --name tauri-build-env-ubuntu-container \
+docker run -it --name tauri-build-env-debian-container \
     -v "$(pwd):/app" \
     --user "$(id -u):$(id -g)" \
-    speeqz1/tauri-build-env-ubuntu
+    speeqz1/tauri-build-env-debian
 ```
 
 **OR**
@@ -64,7 +65,7 @@ docker run -it --name tauri-build-env-ubuntu-container \
 Attach the current terminal to the stopped container:
 
 ```sh
-docker start -ai tauri-build-env-ubuntu-container
+docker start -ai tauri-build-env-debian-container
 ```
 
 <hr/>
@@ -82,18 +83,18 @@ npm run tauri build
 Remove existing container:
 
 ```sh
-docker rm -f tauri-build-env-ubuntu-container
+docker rm -f tauri-build-env-debian-container
 ```
 
 Remove existing image:
 
 ```sh
-docker rmi speeqz1/tauri-build-env-ubuntu
+docker rmi speeqz1/tauri-build-env-debian
 ```
 
 # Dependencies
 
-### Ubuntu Dependencies
+### Debian Dependencies
 
 System dependencies:
 
