@@ -29,7 +29,7 @@ Apps can be easily downloaded by providing the necessary URL links to their repo
 
 To ensure that the app can be built properly and support other Linux distros a Docker container will be used based on Debian.
 
-You can either build the Docker image yourself or pull from the repository:
+You can either build the Docker image yourself or pull from the repository:  
 https://hub.docker.com/r/speeqz1/tauri-build-env-debian
 
 ### Setup
