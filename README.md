@@ -17,7 +17,7 @@
 </div>
 <br/>
 
-Mintifier Installer is a tool made for preconfiguring bundles of apps and installing them all at once at just the click of a button through a visual interface.
+Mintifier Installer is a tool made for preconfiguring bundles of apps and installing them all at once with just the click of a button through a visual interface.
 
 Apps can be easily downloaded by providing the necessary URL links to their repositories or websites and you can easily choose per app what format to download, all managed using a GUI editor for the configuration files or presets.
 
