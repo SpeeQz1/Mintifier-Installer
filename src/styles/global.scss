@@ -15,7 +15,7 @@ html {
   user-select: none;
 }
 
-svg * {
+svg[data-is-image="false"] * {
   // Ensure all SVGs use a color given to them
   fill: currentColor !important;
 }

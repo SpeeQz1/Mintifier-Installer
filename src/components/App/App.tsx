@@ -1,12 +1,19 @@
 import "@src/styles/global.scss";
 import styles from "./App.module.scss";
 
+import { useEffect } from "react";
+
+import { SvgIcons } from "@src/components/index";
 import { WebviewWindow } from "@tauri-apps/api/webviewWindow";
 import { LazyStore } from "@tauri-apps/plugin-store";
-import { SvgIcons } from "@src/components/index";
 import { InstallerSidebar, InstallerContents } from "@src/components/index";
+import { setTheme } from "@src/utils/index";
 
 const App = () => {
+  useEffect(() => {
+    setTheme();
+  }, []);
+
   const createNewWindow = async () => {
     try {
       const store = new LazyStore("settings.json");
@@ -56,7 +63,7 @@ const App = () => {
               <div className={styles.slope3}></div>
             </div>
             <div className={styles.logoText}>Mintifier Installer</div>
-            <img src={SvgIcons.URLs.AppLogo} className={styles.appLogoSVG} />
+            <SvgIcons.AppLogo className={styles.appLogoSVG} />
           </div>
         </div>
         <div className={styles.headerGradient}></div>

@@ -1,31 +1,31 @@
 // Colors
-$color-primary: #86be43;
-$color-primary-light-1: #baf86f;
-$color-primary-light-2: #d7f3b7;
-$color-primary-dark-1: #608731;
+$color-primary: var(--color-primary);
+$color-primary-light-1: var(--color-primary-light-1);
+$color-primary-light-2: var(--color-primary-light-2);
+$color-primary-dark-1: var(--color-primary-dark-1);
 
-$color-secondary: #b6db77;
-$color-secondary-light-1: #edf5e3;
-$color-secondary-light-2: #f5f8f4;
+$color-secondary: var(--color-secondary);
+$color-secondary-light-1: var(--color-secondary-light-1);
+$color-secondary-light-2: var(--color-secondary-light-2);
 
-$color-accent: #215144;
-$color-accent-light-1: #569b89;
-$color-accent-light-2: #dbf5ef;
-$color-accent-dark-1: #122a24;
+$color-accent: var(--color-accent);
+$color-accent-light-1: var(--color-accent-light-1);
+$color-accent-light-2: var(--color-accent-light-2);
+$color-accent-dark-1: var(--color-accent-dark-1);
 
-$color-info: #327dc4;
-$color-info-light-1: #55adff;
-$color-info-dark-1: #1e4c78;
+$color-info: var(--color-info);
+$color-info-light-1: var(--color-info-light-1);
+$color-info-dark-1: var(--color-info-dark-1);
 
-$color-gray: #808080;
-$color-background: #fbfbfe;
-$color-text-1: #000000;
-$color-text-2: #ffffff;
+$color-gray: var(--color-gray);
+$color-background: var(--color-background);
+$color-text-1: var(--color-text-1);
+$color-text-2: var(--color-text-2);
 
 // Gradients
-$color-mint-gradient-1: #69b540;
-$color-mint-gradient-1-light-1: #85e74f;
-$color-mint-gradient-1-dark-1: #4e8630;
-$color-mint-gradient-2: #32baa0;
-$color-mint-gradient-2-dark-1: #207263;
-$color-mint-gradient-2-light-1: #79e4d0;
+$color-mint-gradient-1: var(--color-mint-gradient-1);
+$color-mint-gradient-1-light-1: var(--color-mint-gradient-1-light-1);
+$color-mint-gradient-1-dark-1: var(--color-mint-gradient-1-dark-1);
+$color-mint-gradient-2: var(--color-mint-gradient-2);
+$color-mint-gradient-2-dark-1: var(--color-mint-gradient-2-dark-1);
+$color-mint-gradient-2-light-1: var(--color-mint-gradient-2-light-1);

@@ -1,35 +1,35 @@
-@use "@src/styles/colors.scss" as *;
+@use "@src/styles/colors.scss" as colors;
 
 :export {
   // Colors
-  colorPrimary: $color-primary;
-  colorPrimaryLight1: $color-primary-light-1;
-  colorPrimaryLight2: $color-primary-light-2;
-  colorPrimaryDark1: $color-primary-dark-1;
+  colorPrimary: colors.$color-primary;
+  colorPrimaryLight1: colors.$color-primary-light-1;
+  colorPrimaryLight2: colors.$color-primary-light-2;
+  colorPrimaryDark1: colors.$color-primary-dark-1;
 
-  colorSecondary: $color-secondary;
-  colorSecondaryLight1: $color-secondary-light-1;
-  colorSecondaryLight2: $color-secondary-light-2;
+  colorSecondary: colors.$color-secondary;
+  colorSecondaryLight1: colors.$color-secondary-light-1;
+  colorSecondaryLight2: colors.$color-secondary-light-2;
 
-  colorAccent: $color-accent;
-  colorAccentLight1: $color-accent-light-1;
-  colorAccentLight2: $color-accent-light-2;
-  colorAccentDark1: $color-accent-dark-1;
+  colorAccent: colors.$color-accent;
+  colorAccentLight1: colors.$color-accent-light-1;
+  colorAccentLight2: colors.$color-accent-light-2;
+  colorAccentDark1: colors.$color-accent-dark-1;
 
-  colorInfo: $color-info;
-  colorInfoLight1: $color-info-light-1;
-  colorInfoDark1: $color-info-dark-1;
+  colorInfo: colors.$color-info;
+  colorInfoLight1: colors.$color-info-light-1;
+  colorInfoDark1: colors.$color-info-dark-1;
 
-  colorGray: $color-gray;
-  colorBackground: $color-background;
-  colorText1: $color-text-1;
-  colorText2: $color-text-2;
+  colorGray: colors.$color-gray;
+  colorBackground: colors.$color-background;
+  colorText1: colors.$color-text-1;
+  colorText2: colors.$color-text-2;
 
   // Gradients
-  colorMintGradient1: $color-mint-gradient-1;
-  colorMintGradient1Light1: $color-mint-gradient-1-light-1;
-  colorMintGradient1Dark1: $color-mint-gradient-1-dark-1;
-  colorMintGradient2: $color-mint-gradient-2;
-  colorMintGradient2Dark1: $color-mint-gradient-2-dark-1;
-  colorMintGradient2Light1: $color-mint-gradient-2-light-1;
+  colorMintGradient1: colors.$color-mint-gradient-1;
+  colorMintGradient1Light1: colors.$color-mint-gradient-1-light-1;
+  colorMintGradient1Dark1: colors.$color-mint-gradient-1-dark-1;
+  colorMintGradient2: colors.$color-mint-gradient-2;
+  colorMintGradient2Dark1: colors.$color-mint-gradient-2-dark-1;
+  colorMintGradient2Light1: colors.$color-mint-gradient-2-light-1;
 }

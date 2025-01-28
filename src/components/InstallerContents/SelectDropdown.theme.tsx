@@ -1,6 +1,5 @@
 import { createTheme } from "@mui/material/styles";
 import colors from "@src/styles/colors.module.scss";
-import { alpha } from "@mui/material/styles";
 
 const SelectDropdownTheme = createTheme({
   components: {
@@ -38,7 +37,7 @@ const SelectDropdownTheme = createTheme({
             "& .MuiOutlinedInput-root": {
               "&.Mui-disabled": {
                 "& fieldset": {
-                  borderColor: alpha(colors.colorText1, 0.05),
+                  borderColor: `rgba(${(colors.colorText1, 0.05)})`,
                 },
               },
               "&:not(.Mui-disabled)": {
@@ -75,7 +74,7 @@ const SelectDropdownTheme = createTheme({
       styleOverrides: {
         notchedOutline: {
           borderRadius: "50vh",
-          borderColor: alpha(colors.colorText1, 0.2),
+          borderColor: `rgba(${(colors.colorText1, 0.2)})`,
           borderWidth: 2,
         },
       },
@@ -98,7 +97,7 @@ const SelectDropdownTheme = createTheme({
             fontStyle: "normal",
           },
           "&:hover": {
-            backgroundColor: alpha(colors.colorText1, 0.05),
+            backgroundColor: `rgba(${(colors.colorText1, 0.05)})`,
           },
           "&:not(:first-of-type)": {
             borderTop: `1px solid rgba(${colors.colorText1}, 0.25)`,

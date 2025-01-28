@@ -8,7 +8,7 @@ const InstallerSidebar = () => {
   const activeCategory = useActiveCategoryStore((state) => state.value);
   const setActiveCategory = useActiveCategoryStore((state) => state.setState);
 
-  const handleCategoryClick = (categoryId: string) => {
+  const onCategoryClick = (categoryId: string) => {
     setActiveCategory(categoryId);
   };
 
@@ -26,7 +26,7 @@ const InstallerSidebar = () => {
                   className={`${styles.categoryButton} ${
                     category.id === activeCategory ? styles.active : ""
                   }`}
-                  onClick={() => handleCategoryClick(category.id)}
+                  onClick={() => onCategoryClick(category.id)}
                 >
                   {category.title}
                 </button>
